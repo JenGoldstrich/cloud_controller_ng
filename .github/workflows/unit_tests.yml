@@ -17,7 +17,7 @@ jobs:
       run: bundle install
     - name: Run Rubocop
       run: bundle exec rake rubocop
-    - uses: ravsamhq/notify-slack-action@master
+    - uses: ravsamhq/notify-slack-action@v1.1
       if: always()
       with:
         status: ${{ job.status }}
