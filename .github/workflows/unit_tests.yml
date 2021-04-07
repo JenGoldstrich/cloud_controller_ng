@@ -17,6 +17,13 @@ jobs:
       run: bundle install
     - name: Run Rubocop
       run: bundle exec rake rubocop
+    - uses: ravsamhq/notify-slack-action@master
+      if: always()
+      with:
+        status: ${{ job.status }}
+        notify_when: 'failure' # default is 'success,failure,warnings'
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
   test_postgres:
     runs-on: ubuntu-latest
     container:
