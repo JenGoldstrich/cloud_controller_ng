@@ -19,7 +19,8 @@ module VCAP::CloudController
           }
         })
         iso_seg = IsolationSegmentCreate.create(message)
-
+        #Intentionally fail
+        expect("1").to eq("2")
         expect(iso_seg.name).to eq('my-iso-seg')
         expect(iso_seg).to have_labels(
           { prefix: 'seriouseats.com', key: 'potato', value: 'mashed' },
